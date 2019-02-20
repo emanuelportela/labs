@@ -41,3 +41,5 @@ Route::resource('/role', 'RoleController')->middleware('auth');
 Route::resource('/profil', 'ProfilController')->middleware('auth');
 
 Route::resource('/client', 'ClientController')->middleware('auth');
+
+Route::resource('/carousel', 'CarouselController')->middleware('auth');

@@ -185,7 +185,7 @@ return [
                 [
                     'text'  =>  'Carousel',
                     'icon'  =>  'image',
-                    'url'   =>  '#',
+                    'url'   =>  'carousel',
                 ],
             ],
         ],

@@ -13,5 +13,6 @@
     <a href="{{route('user.index')}}" class="btn btn-info">USERS</a>
     <a href="{{route('profil.index')}}" class="btn btn-primary">PROFILES</a>
     <a href="{{route('client.index')}}" class="btn btn-info">CLIENTS</a>
+    <a href="{{route('carousel.index')}}" class="btn btn-primary">CAROUSELS</a>
 
 @stop

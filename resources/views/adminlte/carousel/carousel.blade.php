@@ -3,40 +3,43 @@
 @section('title', 'AdminLTE')
 
 @section('content_header')
-    <h1>Roles</h1>
+    <h1 class="ml-3">Carousels</h1>
 @stop
 
 @section('content')
 <div class="container">
     <table class="table table-striped">
     <thead>
+        <td colspan="4">
+          <a href="{{route('carousel.create')}}" style="display:block;" class="btn btn-info d-block">Ajouter un carousel</a>
+        </td>
         <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">links</th>
+            <th scope="col">#</th>
+            <th scope="col">Image</th>
         </tr>
     </thead>
     <tbody>
-      <tr><!--
-        <td colspan="3">
-          <a href="{route('role.create')}}" style="display:block;" class="btn btn-success d-block">Ajouter un role</a>
-        </td>
-      </tr>
-        foreach ($roles as $role)
+        @foreach ($carousel as $item)
             <tr>
-                <th scope="row">{$role->id}}</th>
-                <td>{$role->name}}</td>
+                <th scope="row">{{$item->id}}</th>
                 <td>
-
-                    <a href="{route('role.edit', ['role' => $role->id])}}" class="btn btn-warning btn-sm text-white">edit</a>
-                    <form action="{route('role.destroy', ['role' => $role->id])}}" style="display: inline" method="POST">
-                            csrf
-                            method('DELETE')
-                            <button class="btn btn-danger btn-sm">delete</button>
+                    <div style="width: 200px; height: 120px; border-radius: 25px; overflow: hidden; border: 2px solid #4780BE;">
+                        <img src="{{Storage::disk('image')->url($item->image)}}" style="height:100%;">
+                    </div>
+                </td>
+                <td>
+                    <a href="{{route('carousel.edit', ['carousel' => $item->id])}}" class="btn btn-success">SHOW</a>
+                </td>
+                <td>
+                    <form action="{{route('carousel.destroy', ['carousel' => $item->id])}}" style="display: inline" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger">DELETE</button>
                     </form>
                 </td>
             </tr>
-            endforeach-->
+            @endforeach
+            
         </tbody>
     </table>
     
