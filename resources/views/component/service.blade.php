@@ -1,5 +1,5 @@
 	<!-- Services section -->
-	<div class="services-section spad">
+	<div class="services-section spad" id="ancre2">
 		<div class="container">
 			<div class="section-title dark">
 				<h2>Get in <span>the Lab</span> and see the services</h2>
@@ -115,7 +115,7 @@
 				</div>
 			</div>
 			<div class="text-center">
-				<a href="{{route('services')}}" class="site-btn">Browse</a>
+				<a href="{{route('services')}}#ancre1" class="site-btn">Browse</a>
 			</div>
 		</div>
 	</div>

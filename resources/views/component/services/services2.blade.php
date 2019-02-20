@@ -79,7 +79,7 @@
          </div>
       </div>
       <div class="text-center mt100">
-         <a href="#" class="site-btn">Browse</a>
+         <a href="{{route('services')}}#ancre2" class="site-btn">Browse</a>
       </div>
    </div>
 </div>

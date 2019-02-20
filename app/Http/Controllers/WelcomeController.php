@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Client;
 
 class WelcomeController extends Controller
 {
@@ -15,8 +16,9 @@ class WelcomeController extends Controller
         
         // Choisir la première rangée du tableau.
         $notrandom = User::first();
+        $client = Client::all();
         
-        return view('welcome', compact('random1','random2','notrandom'));
+        return view('welcome', compact('random1','random2','notrandom','client'));
     }
 
 }

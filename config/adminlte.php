@@ -169,7 +169,7 @@ return [
         ],
         [
             'text'  =>  'Clients',
-            'url'   =>  '#',
+            'url'   =>  'client',
             'icon'  =>  'user',
         ],
         [

@@ -20,10 +20,17 @@
 				<div class="intro-video">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">
-							
-							<iframe width="101%" height="413" class="video-popup" src="https://www.youtube.com/embed/tgbNymZ7vqY"><!--<img src="img/video.jpg" alt=""><i class="fa fa-play"></i>--></iframe>
+							<img src="img/video.jpg" alt="">
+						  	<a href="https://www.youtube.com/embed/tgbNymZ7vqY" class="video-popup">
+								<i class="fa fa-play"></i>
+							</a>
 						</div>
 					</div>
+
+
+								 </div>
+							</div>
+					  </div>
 				</div>
 			</div>
 		</div>

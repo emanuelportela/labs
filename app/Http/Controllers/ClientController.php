@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Client;
 use Illuminate\Http\Request;
+use App\Client;
+use Storage;
+use Image;
 
 class ClientController extends Controller
 {
@@ -12,9 +14,9 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
+        $client = Client::all();
+        return view('adminlte.clients.client', compact('client'));
     }
 
     /**
@@ -22,9 +24,8 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create() {
+        return view('adminlte.clients.client-create');
     }
 
     /**
@@ -33,9 +34,14 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $newclient = new Client;
+        $newclient->name = $request->name;
+        $newclient->role = $request->role;
+        $newclient->testimony = $request->testimony;
+        $newclient->image = $request->image->store('', 'image');
+        $newclient->save();
+        return view('home');
     }
 
     /**
@@ -44,9 +50,8 @@ class ClientController extends Controller
      * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function show(Client $client)
-    {
-        //
+    public function show(Client $client) {
+        return view('adminlte.clients.client-show', compact('client'));
     }
 
     /**
@@ -55,9 +60,8 @@ class ClientController extends Controller
      * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function edit(Client $client)
-    {
-        //
+    public function edit(Client $client) {
+        return view('adminlte.clients.client-edit', compact('client'));
     }
 
     /**
@@ -67,9 +71,21 @@ class ClientController extends Controller
      * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
-    {
-        //
+    public function update(Request $request, Client $client) {
+        $client->name = $request->name;
+        $client->role = $request->role;
+        $client->testimony = $request->testimony;
+
+        if(isset($request->image)){
+            $client->image = $request->image->store('', 'image');
+            $path = Storage::disk('image')->path($client->image);
+            $img = Image::make($path)->resize(360,448);    
+            $img->save();
+        }
+
+        $client->save();
+
+        return view('home');
     }
 
     /**
@@ -78,8 +94,8 @@ class ClientController extends Controller
      * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Client $client)
-    {
-        //
+    public function destroy(Client $client) {
+        $client->delete();
+        return redirect()->back();
     }
 }

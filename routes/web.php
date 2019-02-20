@@ -29,6 +29,9 @@ Auth::routes();
 
 Route::get('/', 'WelcomeController@index')->name('welcome');
 
+
+// CRUD
+
 Route::get('/backend', 'HomeController@index')->name('home');
 
 Route::resource('/user', 'UserController')->middleware('auth');
@@ -36,3 +39,5 @@ Route::resource('/user', 'UserController')->middleware('auth');
 Route::resource('/role', 'RoleController')->middleware('auth');
 
 Route::resource('/profil', 'ProfilController')->middleware('auth');
+
+Route::resource('/client', 'ClientController')->middleware('auth');

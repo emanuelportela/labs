@@ -1,6 +1,6 @@
 <!-- Contact section -->
 <div class="contact-section spad fix" id="contact-section">
-   <div class="container">
+   <div class="container" id="ancre1">
       <div class="row">
          <!-- contact info -->
          <div class="col-md-5 col-md-offset-1 contact-info col-push">

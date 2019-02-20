@@ -18,7 +18,7 @@ class CreateClientsTable extends Migration
             $table->string('image');
             $table->string('name');
             $table->string('role');
-            $table->string('testemonial');
+            $table->string('testimony');
             $table->timestamps();
         });
     }
