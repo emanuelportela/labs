@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
 
 Route::get('/blog', function () {
     return view('blog');
@@ -27,6 +24,15 @@ Route::get('/services', function () {
     return view('services');
 })->name('services');
 
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');;
+Route::get('/', 'WelcomeController@index')->name('welcome');
+
+Route::get('/backend', 'HomeController@index')->name('home');
+
+Route::resource('/user', 'UserController')->middleware('auth');
+
+Route::resource('/role', 'RoleController')->middleware('auth');
+
+Route::resource('/profil', 'ProfilController')->middleware('auth');

@@ -18,6 +18,16 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password',
     ];
+    
+    protected $table = 'users';
+    
+    public function role() {
+        return $this->belongsTo('App\Role','role_id','id');
+    }
+
+    public function profil() {
+        return $this->hasOne('App\Profil');
+    }
 
     /**
      * The attributes that should be hidden for arrays.
@@ -36,4 +46,5 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 }

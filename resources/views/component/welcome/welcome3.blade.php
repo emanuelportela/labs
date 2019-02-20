@@ -14,16 +14,14 @@
 					</div>
 				</div>
 				<div class="text-center mt60">
-					<a href="" class="site-btn">Browse</a>
+					<a href="{{route('blog')}}" class="site-btn">Browse</a>
 				</div>
 				<!-- popup video -->
 				<div class="intro-video">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">
-							<img src="img/video.jpg" alt="">
-							<a href="https://www.youtube.com/watch?v=JgHfx2v9zOU" class="video-popup">
-								<i class="fa fa-play"></i>
-							</a>
+							
+							<iframe width="101%" height="413" class="video-popup" src="https://www.youtube.com/embed/tgbNymZ7vqY"><!--<img src="img/video.jpg" alt=""><i class="fa fa-play"></i>--></iframe>
 						</div>
 					</div>
 				</div>
