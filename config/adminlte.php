@@ -138,7 +138,7 @@ return [
         [
             'text'  =>  'Projects',
             'icon'  =>  'tasks',
-            'url'   =>  '#',
+            'url'   =>  'project',
         ],
         'DIVERS',
         [
@@ -180,7 +180,7 @@ return [
                 [
                     'text'  =>  'Instagram',
                     'icon'  =>  'instagram',
-                    'url'   =>  '#',
+                    'url'   =>  'instagram',
                 ],
                 [
                     'text'  =>  'Carousel',

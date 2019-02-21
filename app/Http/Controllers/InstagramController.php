@@ -4,82 +4,54 @@ namespace App\Http\Controllers;
 
 use App\Instagram;
 use Illuminate\Http\Request;
+use Storage;
+use Image;
+use Intervention;
 
-class InstagramController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+class InstagramController extends Controller {
+    public function index() {
+        $instagram = Instagram::all();
+        return view('adminlte.instagram.instagram', compact('instagram'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function create() {
+        return view('adminlte.instagram.instagram-create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $newinstagram = new Instagram;
+        $newinstagram->image = $request->image->store('', 'image');
+        $img = Image::make(Storage::disk('image')->path($newinstagram->image))->resize(113,111); 
+        $img->save();
+
+        $newinstagram->save();
+        return view('home');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Instagram  $instagram
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Instagram $instagram)
-    {
-        //
+    public function show(Instagram $instagram) {
+        return view('adminlte.instagram.instagram-show', compact('instagram'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Instagram  $instagram
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Instagram $instagram)
-    {
-        //
+    public function edit(Instagram $instagram) {
+        return view('adminlte.instagram.instagram-edit', compact('instagram'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Instagram  $instagram
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Instagram $instagram)
-    {
-        //
+    public function update(Request $request, Instagram $instagram) {
+
+        if(isset($request->image)){
+            $instagram->image = $request->image->store('', 'image');
+            $path = Storage::disk('image')->path($instagram->image);
+            $img = Image::make($path)->resize(113,111);    
+            $img->save();
+        }
+
+        $instagram->save();
+
+        return view('home');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Instagram  $instagram
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Instagram $instagram)
-    {
-        //
+    public function destroy(Instagram $instagram) {
+        $instagram->delete();
+        return redirect()->back();
     }
 }

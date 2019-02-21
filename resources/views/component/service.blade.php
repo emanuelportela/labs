@@ -1,5 +1,5 @@
 	<!-- Services section -->
-	<div class="services-section spad" id="ancre2">
+	<div class="services-section spad">
 		<div class="container">
 			<div class="section-title dark">
 				<h2>Get in <span>the Lab</span> and see the services</h2>

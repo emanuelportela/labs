@@ -19,7 +19,7 @@
     <tbody>
       <tr>
         <td colspan="3">
-          <a href="{{route('role.create')}}" style="display:block;" class="btn btn-success d-block">Ajouter un role</a>
+          <a href="{{route('role.create')}}" style="display:block;" class="btn btn-info d-block">Ajouter un role</a>
         </td>
       </tr>
         @foreach ($roles as $role)

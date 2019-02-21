@@ -14,5 +14,7 @@
     <a href="{{route('profil.index')}}" class="btn btn-primary">PROFILES</a>
     <a href="{{route('client.index')}}" class="btn btn-info">CLIENTS</a>
     <a href="{{route('carousel.index')}}" class="btn btn-primary">CAROUSELS</a>
+    <a href="{{route('instagram.index')}}" class="btn btn-info">INSTAGRAM</a>
+    <a href="{{route('project.index')}}" class="btn btn-primary">PROJECTS</a>
 
 @stop

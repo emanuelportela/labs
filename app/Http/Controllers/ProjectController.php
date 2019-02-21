@@ -2,84 +2,84 @@
 
 namespace App\Http\Controllers;
 
-use App\Project;
 use Illuminate\Http\Request;
+use App\Project;
+use Storage;
+use Image;
 
 class ProjectController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function index() {
+        $project = Project::all();
+        return view('adminlte.project.project', compact('project'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+
+    public function create() {
+        return view('adminlte.project.project-create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+
+    public function store(Request $request) {
+        $newproject = new Project;
+        $newproject->name = $request->name;
+        $newproject->description = $request->description;
+
+        if(isset($request->icon)){
+            $newproject->icon = $request->icon->store('', 'image');
+            $path = Storage::disk('image')->path($newproject->icon);
+            $img = Image::make($path)->resize(100,100);    
+            $img->save();
+        }
+
+        if(isset($request->image)){
+            $newproject->image = $request->image->store('', 'image');
+            $path = Storage::disk('image')->path($newproject->image);
+            $img = Image::make($path)->resize(100,100);    
+            $img->save();
+        }
+
+        $newproject->save();
+        return view('home');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Project  $project
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Project $project)
-    {
-        //
+    
+    public function show(Project $project) {
+        return view('adminlte.project.project-show', compact('project'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Project  $project
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Project $project)
-    {
-        //
+    
+    public function edit(Project $project) {
+        return view('adminlte.project.project-edit', compact('project'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Project  $project
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Project $project)
-    {
-        //
+    
+    public function update(Request $request, Project $project) {
+        $project->name = $request->name;
+        $project->description = $request->description;
+
+        if(isset($request->icon)){
+            $project->icon = $request->icon->store('', 'image');
+            $path = Storage::disk('image')->path($project->icon);
+            $img = Image::make($path)->resize(100,100);    
+            $img->save();
+        }
+
+        if(isset($request->image)){
+            $project->image = $request->image->store('', 'image');
+            $path = Storage::disk('image')->path($project->image);
+            $img = Image::make($path)->resize(100,100);    
+            $img->save();
+        }
+
+        $project->save();
+
+        return view('home');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Project  $project
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Project $project)
-    {
-        //
+    
+    public function destroy(Project $project) {
+        $project->delete();
+        return redirect()->back();
     }
 }

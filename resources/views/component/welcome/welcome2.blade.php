@@ -6,35 +6,44 @@
 			<div class="container">
 				<div class="row">
 					<!-- single card -->
+					@foreach ($random3 as $item)
 					<div class="col-md-4 col-sm-6">
 						<div class="lab-card">
 							<div class="icon">
-								<i class="flaticon-023-flask"></i>
+								<!--<i class="flaticon-023-flask"></i>-->
+								<img src="{{Storage::disk('image')->url($item->icon)}}">
 							</div>
-							<h2>Get in the lab</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<h2>{{ $item->name }}</h2>
+							<p>{{ $item->description }}</p>
 						</div>
 					</div>
+					@endforeach
 					<!-- single card -->
+					@foreach ($random4 as $item)
 					<div class="col-md-4 col-sm-6">
 						<div class="lab-card">
 							<div class="icon">
-								<i class="flaticon-011-compass"></i>
+								<!--<i class="flaticon-011-compass"></i>-->
+								<img src="{{Storage::disk('image')->url($item->icon)}}">
 							</div>
-							<h2>Projects online</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<h2>{{ $item->name }}</h2>
+							<p>{{ $item->description }}</p>
 						</div>
 					</div>
+					@endforeach
 					<!-- single card -->
+					@foreach ($random5 as $item)
 					<div class="col-md-4 col-sm-12">
 						<div class="lab-card">
 							<div class="icon">
-								<i class="flaticon-037-idea"></i>
+								<!--<i class="flaticon-037-idea"></i>-->
+								<img src="{{Storage::disk('image')->url($item->icon)}}">
 							</div>
-							<h2>SMART MARKETING</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..</p>
+							<h2>{{ $item->name }}</h2>
+							<p>{{ $item->description }}</p>
 						</div>
 					</div>
+					@endforeach
 				</div>
 			</div>
 		</div>
